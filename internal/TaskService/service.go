@@ -22,9 +22,9 @@ func (s *TaskService) CreatesTask(task RequestBody) (RequestBody, error) {
 	newTask := RequestBody{
 		Task:       task.Task,
 		IsDone:     false,
-		created_at: time.Now(),
-		updated_at: time.Now(),
-		deleted_at: time.Now(),
+		Created_at: time.Now(),
+		Updated_at: time.Now(),
+		Deleted_at: time.Now(),
 	}
 
 	err := s.repo.CreateTask(newTask)

@@ -1,12 +1,14 @@
 package TaskService
 
-import "time"
+import (
+	"time"
+)
 
 type RequestBody struct {
 	ID         uint      `gorm:"primaryKey;type:uuid;default:uuid_generate_v4()" json:"id"`
 	Task       string    `json:"task"`
 	IsDone     bool      `json:"isDone"`
-	created_at time.Time `json:"created_at"`
-	updated_at time.Time `json:"updated_at"`
-	deleted_at time.Time `sql:"deleted_at"`
+	Created_at time.Time `json:"created_at"`
+	Updated_at time.Time `json:"updated_at"`
+	Deleted_at time.Time `json:"deleted_at"`
 }

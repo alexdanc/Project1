@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92a825c6-51b0-4bcd-99b1-f9e11fbccdc1" name="Changes" comment="Migration1">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Project1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Project1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+    <list default="true" id="92a825c6-51b0-4bcd-99b1-f9e11fbccdc1" name="Changes" comment="MigrationS">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +94,7 @@
     "RunOnceActivity.go.migrated.go.modules.settings": "true",
     "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
     "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "2b8be84f",
+    "git-widget-placeholder": "74f6dce4",
     "go.import.settings.migrated": "true",
     "last_opened_file_path": "C:/Users/Alex",
     "node.js.detected.package.eslint": "true",
@@ -182,6 +176,21 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -192,7 +201,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/master" />
+                        <option value="HEAD" />
                       </list>
                     </value>
                   </entry>
@@ -210,7 +219,9 @@
     <MESSAGE value="commit3" />
     <MESSAGE value="Migration" />
     <MESSAGE value="Migration1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Migration1" />
+    <MESSAGE value="Migration!!!" />
+    <MESSAGE value="MigrationS" />
+    <option name="LAST_COMMIT_MESSAGE" value="MigrationS" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

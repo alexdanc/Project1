@@ -1,5 +1,7 @@
 package TaskService
 
+import "time"
+
 type RequestBodyService interface {
 	CreatesTask(task RequestBody) (RequestBody, error)
 	GetAllTasks() ([]RequestBody, error)
@@ -18,8 +20,11 @@ func NewTaskService(r RequestBodyRepository) RequestBodyService {
 
 func (s *TaskService) CreatesTask(task RequestBody) (RequestBody, error) {
 	newTask := RequestBody{
-		Task:   task.Task,
-		IsDone: false,
+		Task:       task.Task,
+		IsDone:     false,
+		created_at: time.Now(),
+		updated_at: time.Now(),
+		deleted_at: time.Now(),
 	}
 
 	err := s.repo.CreateTask(newTask)

@@ -3,10 +3,10 @@ package TaskService
 import "time"
 
 type RequestBodyService interface {
-	CreatesTask(task RequestBody) (RequestBody, error)
-	GetAllTasks() ([]RequestBody, error)
-	GetTaskByID(id string) (RequestBody, error)
-	UpdateTask(id string, body string) (RequestBody, error)
+	CreatesTask(task Tasks) (Tasks, error)
+	GetAllTasks() ([]Tasks, error)
+	GetTaskByID(id string) (Tasks, error)
+	UpdateTask(id string, body string) (Tasks, error)
 	DeleteTaskByID(id string) error
 }
 
@@ -18,8 +18,8 @@ func NewTaskService(r RequestBodyRepository) RequestBodyService {
 	return &TaskService{repo: r}
 }
 
-func (s *TaskService) CreatesTask(task RequestBody) (RequestBody, error) {
-	newTask := RequestBody{
+func (s *TaskService) CreatesTask(task Tasks) (Tasks, error) {
+	newTask := Tasks{
 		Task:       task.Task,
 		IsDone:     false,
 		Created_at: time.Now(),
@@ -29,21 +29,21 @@ func (s *TaskService) CreatesTask(task RequestBody) (RequestBody, error) {
 
 	err := s.repo.CreateTask(newTask)
 	if err != nil {
-		return RequestBody{}, err
+		return Tasks{}, err
 	}
 
 	return newTask, nil
 }
 
-func (s *TaskService) GetAllTasks() ([]RequestBody, error) {
+func (s *TaskService) GetAllTasks() ([]Tasks, error) {
 	return s.repo.GetAllTasks()
 }
 
-func (s *TaskService) GetTaskByID(id string) (RequestBody, error) {
+func (s *TaskService) GetTaskByID(id string) (Tasks, error) {
 	return s.repo.GetTaskByID(id)
 }
 
-func (s *TaskService) UpdateTask(id, body string) (RequestBody, error) {
+func (s *TaskService) UpdateTask(id, body string) (Tasks, error) {
 	tas, err := s.repo.GetTaskByID(id)
 	if err != nil {
 		return tas, err

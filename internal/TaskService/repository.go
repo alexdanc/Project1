@@ -3,10 +3,10 @@ package TaskService
 import "gorm.io/gorm"
 
 type RequestBodyRepository interface {
-	CreateTask(req RequestBody) error
-	GetAllTasks() ([]RequestBody, error)
-	GetTaskByID(id string) (RequestBody, error)
-	UpdateTask(req RequestBody) error
+	CreateTask(req Tasks) error
+	GetAllTasks() ([]Tasks, error)
+	GetTaskByID(id string) (Tasks, error)
+	UpdateTask(req Tasks) error
 	DeleteTaskByID(id string) error
 }
 
@@ -18,7 +18,7 @@ func NewRepository(db *gorm.DB) RequestBodyRepository {
 	return &TaskRepository{db: db}
 }
 
-func (r *TaskRepository) CreateTask(req RequestBody) error {
+func (r *TaskRepository) CreateTask(req Tasks) error {
 	result := r.db.Create(&req)
 	if result.Error != nil {
 		return result.Error
@@ -26,23 +26,23 @@ func (r *TaskRepository) CreateTask(req RequestBody) error {
 	return nil
 }
 
-func (r *TaskRepository) GetAllTasks() ([]RequestBody, error) {
-	var tasks []RequestBody
+func (r *TaskRepository) GetAllTasks() ([]Tasks, error) {
+	var tasks []Tasks
 	err := r.db.Find(&tasks).Error
 	return tasks, err
 }
 
-func (r *TaskRepository) GetTaskByID(id string) (RequestBody, error) {
-	var tas RequestBody
+func (r *TaskRepository) GetTaskByID(id string) (Tasks, error) {
+	var tas Tasks
 	err := r.db.First(&tas, id).Error
 	return tas, err
 
 }
 
-func (r *TaskRepository) UpdateTask(req RequestBody) error {
+func (r *TaskRepository) UpdateTask(req Tasks) error {
 	return r.db.Save(&req).Error
 }
 
 func (r *TaskRepository) DeleteTaskByID(id string) error {
-	return r.db.Delete(&RequestBody{}, "id = ?", id).Error
+	return r.db.Delete(&Tasks{}, "id = ?", id).Error
 }

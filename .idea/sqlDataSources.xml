@@ -6,7 +6,7 @@
         <State>
           <option name="id" value="0c63ee66-e924-4f6b-bd75-8be4c15292ad" />
           <option name="name" value="postgres@localhost (DDL)" />
-          <option name="dbmsName" value="POSTGRES" />
+          <option name="dbmsName" value="UNKNOWN" />
           <option name="urls">
             <array>
               <option value="file://$PROJECT_DIR$" />

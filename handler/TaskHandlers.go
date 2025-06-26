@@ -23,7 +23,7 @@ func (h *RequestBodyHandlers) GetHandler(c echo.Context) error {
 }
 
 func (h *RequestBodyHandlers) PostHandler(c echo.Context) error {
-	var req TaskService.RequestBody
+	var req TaskService.Tasks
 	if err := c.Bind(&req); err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]string{
 			"error": "Ошибка записи JSON",
@@ -46,7 +46,7 @@ func (h *RequestBodyHandlers) PostHandler(c echo.Context) error {
 
 func (h *RequestBodyHandlers) PatchHandler(c echo.Context) error {
 	id := c.Param("id")
-	var body TaskService.RequestBody
+	var body TaskService.Tasks
 	if err := c.Bind(&body); err != nil {
 		return c.JSON(http.StatusBadRequest, "Ошибка парсинга JSON")
 	}

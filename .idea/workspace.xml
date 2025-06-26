@@ -5,21 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92a825c6-51b0-4bcd-99b1-f9e11fbccdc1" name="Changes" comment="MigrationS">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqlDataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/20250626075335_tasks.down.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/20250626075335_tasks.up.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqlDataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqlDataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/db.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/20250620170040_tasks.down.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/20250620170040_tasks.up.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/TaskHandlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/TaskHandlers.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/TaskService/orm.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/TaskService/orm.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/TaskService/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/TaskService/repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/TaskService/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/TaskService/service.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" show_ignored="true">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="repository" />
+    </option>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -65,10 +70,11 @@
 }</component>
   <component name="Make.Settings">
     <option name="autoScrollToSourceInToolWindow" value="true" />
+    <option name="path" value="C:\Program Files (x86)\GnuWin32\bin\make.exe" />
     <option name="sortAlphabeticallyInToolWindow" value="true" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -122,6 +128,7 @@
       "postgresql"
     ],
     "RunConfigurationTargetLRU": [
+      "9d29593b-4ed0-44dd-8ee9-b6982f4396df",
       "06df2e40-5d59-429c-be6d-befacb84e87f",
       "3f908c86-febc-41ac-b8bd-c1e4735849c1"
     ]
@@ -129,22 +136,22 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Alex\GolandProjects\Project1" />
       <recent name="C:\Users\Alex\GolandProjects\Project1\cmd" />
       <recent name="C:\Users\Alex\GolandProjects\Project1\migrations" />
-      <recent name="C:\Users\Alex\GolandProjects\Project1" />
     </key>
   </component>
-  <component name="RunManager" selected="Database Script.20250626075335_tasks.up.sql">
+  <component name="RunManager" selected="Makefile Target.migrate">
     <configuration name="20250626075335_tasks.down.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/migrations/20250626075335_tasks.down.sql" />
       <script-mode>FILE</script-mode>
-      <data-source id="06df2e40-5d59-429c-be6d-befacb84e87f" />
+      <data-source id="9d29593b-4ed0-44dd-8ee9-b6982f4396df" />
       <method v="2" />
     </configuration>
     <configuration name="20250626075335_tasks.up.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/migrations/20250626075335_tasks.up.sql" />
       <script-mode>FILE</script-mode>
-      <data-source id="06df2e40-5d59-429c-be6d-befacb84e87f" />
+      <data-source id="9d29593b-4ed0-44dd-8ee9-b6982f4396df" />
       <method v="2" />
     </configuration>
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -156,14 +163,14 @@
       <filePath value="$PROJECT_DIR$/cmd/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="migrate-new" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/Makefile" target="migrate-new" workingDirectory="" arguments="">
+    <configuration name="migrate-down" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="migrate-down" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
     </configuration>
-    <configuration name="run" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/Makefile" target="run" workingDirectory="" arguments="">
+    <configuration name="migrate" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="migrate" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
@@ -178,16 +185,16 @@
       <item itemvalue="Database Script.20250626075335_tasks.down.sql" />
       <item itemvalue="Database Script.20250626075335_tasks.up.sql" />
       <item itemvalue="Go Build.go build main.go" />
-      <item itemvalue="Makefile Target.run" />
-      <item itemvalue="Makefile Target.migrate-new" />
+      <item itemvalue="Makefile Target.migrate" />
+      <item itemvalue="Makefile Target.migrate-down" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Database Script.20250626075335_tasks.up.sql" />
+        <item itemvalue="Makefile Target.migrate" />
+        <item itemvalue="Makefile Target.migrate-down" />
         <item itemvalue="Go Build.go build main.go" />
+        <item itemvalue="Database Script.20250626075335_tasks.up.sql" />
         <item itemvalue="Database Script.20250626075335_tasks.down.sql" />
-        <item itemvalue="Makefile Target.run" />
-        <item itemvalue="Makefile Target.migrate-new" />
       </list>
     </recent_temporary>
   </component>
@@ -257,7 +264,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="detached3" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

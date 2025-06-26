@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-type RequestBody struct {
+type Tasks struct {
 	ID         uint      `gorm:"primaryKey;type:uuid;default:uuid_generate_v4()" json:"id"`
 	Task       string    `json:"task"`
 	IsDone     bool      `json:"isDone"`

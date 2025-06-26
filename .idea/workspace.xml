@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92a825c6-51b0-4bcd-99b1-f9e11fbccdc1" name="Changes" comment="MigrationS">
-      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqlDataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqlDataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/TaskHandlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/TaskHandlers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/TaskService/orm.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/TaskService/orm.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/TaskService/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/TaskService/repository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/TaskService/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/TaskService/service.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,53 +79,53 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Database Script.20250620170040_tasks.down.sql.executor": "Run",
-    "Database Script.20250626075335_tasks.down.sql.executor": "Run",
-    "Database Script.20250626075335_tasks.up.sql.executor": "Run",
-    "Database Script.Down.executor": "Run",
-    "Database Script.UP.executor": "Run",
-    "Database Script.Unnamed.executor": "Run",
-    "Database Script.down.executor": "Run",
-    "DefaultGoTemplateProperty": "Go File",
-    "Go Build.go build Project1.executor": "Run",
-    "Go Build.go build main.go.executor": "Run",
-    "Makefile Target.migrate-down.executor": "Run",
-    "Makefile Target.migrate-new.executor": "Run",
-    "Makefile Target.migrate.executor": "Run",
-    "Makefile Target.run.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.GoLinterPluginOnboarding": "true",
-    "RunOnceActivity.GoLinterPluginStorageMigration": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "detached3",
-    "go.import.settings.migrated": "true",
-    "ignore_missing_gitignore": "true",
-    "last_opened_file_path": "C:/Users/Alex",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/Alex/GolandProjects/Project1/main.go",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.make"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Database Script.20250620170040_tasks.down.sql.executor&quot;: &quot;Run&quot;,
+    &quot;Database Script.20250626075335_tasks.down.sql.executor&quot;: &quot;Run&quot;,
+    &quot;Database Script.20250626075335_tasks.up.sql.executor&quot;: &quot;Run&quot;,
+    &quot;Database Script.Down.executor&quot;: &quot;Run&quot;,
+    &quot;Database Script.UP.executor&quot;: &quot;Run&quot;,
+    &quot;Database Script.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;Database Script.down.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;Go Build.go build Project1.executor&quot;: &quot;Run&quot;,
+    &quot;Go Build.go build main.go.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.migrate-down.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.migrate-new.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.migrate.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.run.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.GoLinterPluginOnboarding&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.GoLinterPluginStorageMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;detached3&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;ignore_missing_gitignore&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Alex/GolandProjects/Project1/main.go&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.make&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ],
-    "RunConfigurationTargetLRU": [
-      "9d29593b-4ed0-44dd-8ee9-b6982f4396df",
-      "06df2e40-5d59-429c-be6d-befacb84e87f",
-      "3f908c86-febc-41ac-b8bd-c1e4735849c1"
+    &quot;RunConfigurationTargetLRU&quot;: [
+      &quot;9d29593b-4ed0-44dd-8ee9-b6982f4396df&quot;,
+      &quot;06df2e40-5d59-429c-be6d-befacb84e87f&quot;,
+      &quot;3f908c86-febc-41ac-b8bd-c1e4735849c1&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Alex\GolandProjects\Project1" />

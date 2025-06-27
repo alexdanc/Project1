@@ -1,47 +1,34 @@
 package main
 
 import (
-	"Project1/db"
-	"Project1/handler"
+	"Project1/database"
+	handlers "Project1/handler"
 	"Project1/internal/TaskService"
+	tasks "Project1/internal/Web/Tasks"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"log"
-	"net/http"
 )
 
 func main() {
-
-	database, err := db.InitDB()
+	// Правильно инициализируем БД и сохраняем результат
+	db, err := database.InitDB()
 	if err != nil {
-		log.Fatalf("failed to connect database: %v", err)
+		log.Fatalf("failed to init db: %v", err)
 	}
 
+	repo := TaskService.NewRepository(db)
+	service := TaskService.NewTaskService(repo)
+	handler := handlers.NewRequestBodyHandlers(service)
+
 	e := echo.New()
-
-	taskRepo := TaskService.NewRepository(database)
-	taskServ := TaskService.NewTaskService(taskRepo)
-	taskHand := handlers.NewRequestBodyHandlers(taskServ)
-
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
-	e.HTTPErrorHandler = func(err error, c echo.Context) {
-		code := http.StatusInternalServerError
-		if he, ok := err.(*echo.HTTPError); ok {
-			code = he.Code
-		}
-		log.Printf("HTTP Error: %d (%s)", code, err.Error())
-		c.JSON(code, map[string]string{
-			"error": err.Error(),
-		})
+	strictHandler := tasks.NewStrictHandler(handler, nil)
+	tasks.RegisterHandlers(e, strictHandler)
+
+	if err := e.Start(":8080"); err != nil {
+		log.Fatalf("failed to start with err: %v", err)
 	}
-
-	e.GET("/task", taskHand.GetHandler)
-	e.POST("/task", taskHand.PostHandler)
-	e.PATCH("/task/:id", taskHand.PatchHandler)
-	e.DELETE("/task/:id", taskHand.DeleteHandler)
-
-	e.Logger.Fatal(e.Start(":8080"))
-
 }

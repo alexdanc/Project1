@@ -2,6 +2,9 @@ package handlers
 
 import (
 	"Project1/internal/TaskService"
+	tasks "Project1/internal/Web/Tasks"
+	"context"
+
 	"github.com/labstack/echo/v4"
 	"net/http"
 )
@@ -10,38 +13,50 @@ type RequestBodyHandlers struct {
 	service TaskService.RequestBodyService
 }
 
+func (h *RequestBodyHandlers) GetTasks(ctx context.Context, request tasks.GetTasksRequestObject) (tasks.GetTasksResponseObject, error) {
+	allTasks, err := h.service.GetAllTasks()
+	if err != nil {
+		return nil, err
+	}
+
+	response := tasks.GetTasks200JSONResponse{}
+
+	for _, tsk := range allTasks {
+		task := tasks.Task{
+			Id:     &tsk.ID,
+			Task:   &tsk.Task,
+			IsDone: &tsk.IsDone,
+		}
+		response = append(response, task)
+	}
+
+	return response, nil
+}
+
+func (h *RequestBodyHandlers) PostTasks(ctx context.Context, request tasks.PostTasksRequestObject) (tasks.PostTasksResponseObject, error) {
+	taskRequest := request.Body // теперь это *PostTaskRequest
+
+	taskToCreate := TaskService.Tasks{
+		Task:   taskRequest.Task,
+		IsDone: false, // всегда false
+	}
+
+	createdTask, err := h.service.CreatesTask(taskToCreate)
+	if err != nil {
+		return nil, err
+	}
+
+	response := tasks.PostTasks201JSONResponse{
+		Id:     &createdTask.ID,
+		Task:   &createdTask.Task,
+		IsDone: &createdTask.IsDone,
+	}
+
+	return response, nil
+}
+
 func NewRequestBodyHandlers(s TaskService.RequestBodyService) *RequestBodyHandlers {
 	return &RequestBodyHandlers{service: s}
-}
-
-func (h *RequestBodyHandlers) GetHandler(c echo.Context) error {
-	tasks, err := h.service.GetAllTasks()
-	if err != nil {
-		return c.String(http.StatusInternalServerError, err.Error())
-	}
-	return c.JSON(http.StatusOK, tasks)
-}
-
-func (h *RequestBodyHandlers) PostHandler(c echo.Context) error {
-	var req TaskService.Tasks
-	if err := c.Bind(&req); err != nil {
-		return c.JSON(http.StatusBadRequest, map[string]string{
-			"error": "Ошибка записи JSON",
-		})
-	}
-	if req.Task == "" {
-		return c.JSON(http.StatusBadRequest, map[string]string{
-			"error": "Задача не может быть пустой",
-		})
-	}
-	body, err := h.service.CreatesTask(req)
-	if err != nil {
-		return c.JSON(http.StatusInternalServerError, map[string]string{
-			"error": "Произошла ошибка при создании задачи",
-		})
-	}
-
-	return c.JSON(http.StatusCreated, body)
 }
 
 func (h *RequestBodyHandlers) PatchHandler(c echo.Context) error {

@@ -3,7 +3,7 @@ package TaskService
 import "gorm.io/gorm"
 
 type RequestBodyRepository interface {
-	CreateTask(req Tasks) error
+	CreateTask(req *Tasks) error
 	GetAllTasks() ([]Tasks, error)
 	GetTaskByID(id string) (Tasks, error)
 	UpdateTask(req Tasks) error
@@ -11,15 +11,15 @@ type RequestBodyRepository interface {
 }
 
 type TaskRepository struct {
-	db *gorm.DB
+	DB *gorm.DB
 }
 
-func NewRepository(db *gorm.DB) RequestBodyRepository {
-	return &TaskRepository{db: db}
+func NewRepository(DB *gorm.DB) RequestBodyRepository {
+	return &TaskRepository{DB: DB}
 }
 
-func (r *TaskRepository) CreateTask(req Tasks) error {
-	result := r.db.Create(&req)
+func (r *TaskRepository) CreateTask(req *Tasks) error {
+	result := r.DB.Create(req) // передаем указатель, чтобы GORM мог заполнить поля
 	if result.Error != nil {
 		return result.Error
 	}
@@ -27,22 +27,22 @@ func (r *TaskRepository) CreateTask(req Tasks) error {
 }
 
 func (r *TaskRepository) GetAllTasks() ([]Tasks, error) {
-	var tasks []Tasks
-	err := r.db.Find(&tasks).Error
-	return tasks, err
+	var task []Tasks
+	err := r.DB.Find(&task).Error
+	return task, err
 }
 
 func (r *TaskRepository) GetTaskByID(id string) (Tasks, error) {
 	var tas Tasks
-	err := r.db.First(&tas, id).Error
+	err := r.DB.First(&tas, id).Error
 	return tas, err
 
 }
 
 func (r *TaskRepository) UpdateTask(req Tasks) error {
-	return r.db.Save(&req).Error
+	return r.DB.Save(&req).Error
 }
 
 func (r *TaskRepository) DeleteTaskByID(id string) error {
-	return r.db.Delete(&Tasks{}, "id = ?", id).Error
+	return r.DB.Delete(&Tasks{}, "id = ?", id).Error
 }

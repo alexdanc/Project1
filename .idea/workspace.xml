@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92a825c6-51b0-4bcd-99b1-f9e11fbccdc1" name="Changes" comment="MigrationS">
+      <change afterPath="$PROJECT_DIR$/openapi/.openapi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openapi/openapi.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/database/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/TaskHandlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/TaskHandlers.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/TaskService/orm.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/TaskService/orm.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/TaskService/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/TaskService/repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/TaskService/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/TaskService/service.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,73 +90,67 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Database Script.20250620170040_tasks.down.sql.executor&quot;: &quot;Run&quot;,
-    &quot;Database Script.20250626075335_tasks.down.sql.executor&quot;: &quot;Run&quot;,
-    &quot;Database Script.20250626075335_tasks.up.sql.executor&quot;: &quot;Run&quot;,
-    &quot;Database Script.Down.executor&quot;: &quot;Run&quot;,
-    &quot;Database Script.UP.executor&quot;: &quot;Run&quot;,
-    &quot;Database Script.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;Database Script.down.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
-    &quot;Go Build.go build Project1.executor&quot;: &quot;Run&quot;,
-    &quot;Go Build.go build main.go.executor&quot;: &quot;Run&quot;,
-    &quot;Makefile Target.migrate-down.executor&quot;: &quot;Run&quot;,
-    &quot;Makefile Target.migrate-new.executor&quot;: &quot;Run&quot;,
-    &quot;Makefile Target.migrate.executor&quot;: &quot;Run&quot;,
-    &quot;Makefile Target.run.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.GoLinterPluginOnboarding&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.GoLinterPluginStorageMigration&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
-    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;detached3&quot;,
-    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;ignore_missing_gitignore&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Alex/GolandProjects/Project1/main.go&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.make&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Database Script.20250620170040_tasks.down.sql.executor": "Run",
+    "Database Script.20250626075335_tasks.down.sql.executor": "Run",
+    "Database Script.20250626075335_tasks.up.sql.executor": "Run",
+    "Database Script.Down.executor": "Run",
+    "Database Script.UP.executor": "Run",
+    "Database Script.Unnamed.executor": "Run",
+    "Database Script.down.executor": "Run",
+    "DefaultGoTemplateProperty": "Go File",
+    "Go Build.go build Project1.executor": "Run",
+    "Go Build.go build main.go.executor": "Run",
+    "HTTP Request.openapi_requests | #1.executor": "Run",
+    "HTTP Request.openapi_requests | #2.executor": "Run",
+    "Makefile Target.gen.executor": "Run",
+    "Makefile Target.migrate-down.executor": "Run",
+    "Makefile Target.migrate-new.executor": "Run",
+    "Makefile Target.migrate.executor": "Run",
+    "Makefile Target.run.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "OpenAPI/Swagger Code Generator.openapi.yaml (1).executor": "Run",
+    "OpenAPI/Swagger Code Generator.openapi.yml.executor": "Run",
+    "RunOnceActivity.GoLinterPluginOnboarding": "true",
+    "RunOnceActivity.GoLinterPluginStorageMigration": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "detached3",
+    "go.import.settings.migrated": "true",
+    "ignore_missing_gitignore": "true",
+    "last_opened_file_path": "C:/Users/Alex",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/Alex/GolandProjects/Project1/main.go",
+    "settings.editor.selected.configurable": "swagger"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ],
-    &quot;RunConfigurationTargetLRU&quot;: [
-      &quot;9d29593b-4ed0-44dd-8ee9-b6982f4396df&quot;,
-      &quot;06df2e40-5d59-429c-be6d-befacb84e87f&quot;,
-      &quot;3f908c86-febc-41ac-b8bd-c1e4735849c1&quot;
+    "RunConfigurationTargetLRU": [
+      "9d29593b-4ed0-44dd-8ee9-b6982f4396df",
+      "06df2e40-5d59-429c-be6d-befacb84e87f",
+      "3f908c86-febc-41ac-b8bd-c1e4735849c1"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Alex\GolandProjects\Project1\openapi" />
       <recent name="C:\Users\Alex\GolandProjects\Project1" />
       <recent name="C:\Users\Alex\GolandProjects\Project1\cmd" />
       <recent name="C:\Users\Alex\GolandProjects\Project1\migrations" />
     </key>
   </component>
-  <component name="RunManager" selected="Makefile Target.migrate">
-    <configuration name="20250626075335_tasks.down.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
-      <script-file value="$PROJECT_DIR$/migrations/20250626075335_tasks.down.sql" />
-      <script-mode>FILE</script-mode>
-      <data-source id="9d29593b-4ed0-44dd-8ee9-b6982f4396df" />
-      <method v="2" />
-    </configuration>
-    <configuration name="20250626075335_tasks.up.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
-      <script-file value="$PROJECT_DIR$/migrations/20250626075335_tasks.up.sql" />
-      <script-mode>FILE</script-mode>
-      <data-source id="9d29593b-4ed0-44dd-8ee9-b6982f4396df" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Go Build.go build main.go">
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="Project1" />
       <working_directory value="$PROJECT_DIR$" />
@@ -153,6 +158,12 @@
       <package value="Project1" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$/cmd/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="gen" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="gen" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
       <method v="2" />
     </configuration>
     <configuration name="migrate-down" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
@@ -167,6 +178,23 @@
       </makefile>
       <method v="2" />
     </configuration>
+    <configuration name="openapi.yaml (1)" type="SwaggerCodegen" editBeforeRun="true" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="customTemplatesPath" value="" />
+      <option name="generateToPath" value="C:\Users\Alex\gen" />
+      <option name="generationParameters">
+        <list />
+      </option>
+      <option name="generatorType" value="OPENAPI_GENERATOR_V7" />
+      <option name="jdkPath" value="C:\Program Files\JetBrains\GoLand 2025.1.2\jbr\bin\java.exe" />
+      <option name="language" value="go" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="specificationPath" value="C:\Users\Alex\GolandProjects\Project1\openapi\openapi.yaml" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
       <deployment type="dockerfile">
         <settings />
@@ -174,19 +202,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Database Script.20250626075335_tasks.down.sql" />
-      <item itemvalue="Database Script.20250626075335_tasks.up.sql" />
       <item itemvalue="Go Build.go build main.go" />
+      <item itemvalue="Makefile Target.gen" />
       <item itemvalue="Makefile Target.migrate" />
       <item itemvalue="Makefile Target.migrate-down" />
+      <item itemvalue="OpenAPI/Swagger Code Generator.openapi.yaml (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build main.go" />
+        <item itemvalue="Makefile Target.gen" />
+        <item itemvalue="OpenAPI/Swagger Code Generator.openapi.yaml (1)" />
         <item itemvalue="Makefile Target.migrate" />
         <item itemvalue="Makefile Target.migrate-down" />
-        <item itemvalue="Go Build.go build main.go" />
-        <item itemvalue="Database Script.20250626075335_tasks.up.sql" />
-        <item itemvalue="Database Script.20250626075335_tasks.down.sql" />
       </list>
     </recent_temporary>
   </component>

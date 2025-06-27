@@ -1,7 +1,5 @@
 package TaskService
 
-import "time"
-
 type RequestBodyService interface {
 	CreatesTask(task Tasks) (Tasks, error)
 	GetAllTasks() ([]Tasks, error)
@@ -19,20 +17,17 @@ func NewTaskService(r RequestBodyRepository) RequestBodyService {
 }
 
 func (s *TaskService) CreatesTask(task Tasks) (Tasks, error) {
-	newTask := Tasks{
-		Task:       task.Task,
-		IsDone:     false,
-		Created_at: time.Now(),
-		Updated_at: time.Now(),
-		Deleted_at: time.Now(),
+	newTask := &Tasks{
+		Task:   task.Task,
+		IsDone: false, // Можно либо всегда ставить false, либо брать из task.IsDone
 	}
 
-	err := s.repo.CreateTask(newTask)
+	err := s.repo.CreateTask(newTask) // передаем указатель
 	if err != nil {
 		return Tasks{}, err
 	}
 
-	return newTask, nil
+	return *newTask, nil // возвращаем обновленную структуру с ID
 }
 
 func (s *TaskService) GetAllTasks() ([]Tasks, error) {

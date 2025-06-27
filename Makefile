@@ -18,4 +18,7 @@ migrate-down:
 
 # для удобства добавим команду run, которая будет запускать наше приложение
 run:
-	go run cmd/main.go # Теперь при вызове make run мы запустим наш сервер
+	go run cmd/main.go
+
+gen:
+	oapi-codegen -config openapi/.openapi -include-tags tasks -package tasks openapi/openapi.yaml > ./internal/Web/Tasks/api.gen.go

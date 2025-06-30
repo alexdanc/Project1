@@ -16,6 +16,9 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to init db: %v", err)
 	}
+	if err := database.DB.AutoMigrate(&TaskService.Tasks{}); err != nil {
+		log.Fatalf("failed to AutoMigrate: %v", err)
+	}
 
 	repo := TaskService.NewRepository(db)
 	service := TaskService.NewTaskService(repo)

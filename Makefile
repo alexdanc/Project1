@@ -22,3 +22,5 @@ run:
 
 gen:
 	oapi-codegen -config openapi/.openapi -include-tags tasks -package tasks openapi/openapi.yaml > ./internal/Web/Tasks/api.gen.go
+lint:
+	golangci-lint run --color=always

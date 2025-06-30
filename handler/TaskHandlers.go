@@ -4,6 +4,8 @@ import (
 	"Project1/internal/TaskService"
 	tasks "Project1/internal/Web/Tasks"
 	"context"
+	"fmt"
+	"strconv"
 
 	"github.com/labstack/echo/v4"
 	"net/http"
@@ -11,6 +13,46 @@ import (
 
 type RequestBodyHandlers struct {
 	service TaskService.RequestBodyService
+}
+
+func (h *RequestBodyHandlers) DeleteTasksId(ctx context.Context, request tasks.DeleteTasksIdRequestObject) (tasks.DeleteTasksIdResponseObject, error) {
+	idStr := strconv.Itoa(request.Id)
+
+	err := h.service.DeleteTaskByID(idStr)
+	if err != nil {
+		// Если ошибка — например, задача не найдена, можно возвращать 404
+		// Но для простоты — возвращаем ошибку
+		return nil, err
+	}
+
+	return tasks.DeleteTasksId204Response{}, nil
+}
+
+func (h *RequestBodyHandlers) PatchTasksId(ctx context.Context, request tasks.PatchTasksIdRequestObject) (tasks.PatchTasksIdResponseObject, error) {
+	idStr := strconv.Itoa(request.Id)
+
+	// Проверяем, что тело запроса не nil и поле Task не nil
+	if request.Body == nil || request.Body.Task == nil {
+		return nil, fmt.Errorf("missing 'task' field in request body")
+	}
+
+	updatedTask, err := h.service.UpdateTask(idStr, *request.Body.Task)
+	if err != nil {
+		return nil, err
+	}
+
+	// Формируем ответ в формате tasks.Task (OpenAPI)
+	response := tasks.PatchTasksId200JSONResponse{
+		Id:     &updatedTask.ID,
+		Task:   &updatedTask.Task,
+		IsDone: &updatedTask.IsDone,
+	}
+
+	return response, nil
+}
+
+func NewRequestBodyHandlers(s TaskService.RequestBodyService) *RequestBodyHandlers {
+	return &RequestBodyHandlers{service: s}
 }
 
 func (h *RequestBodyHandlers) GetTasks(ctx context.Context, request tasks.GetTasksRequestObject) (tasks.GetTasksResponseObject, error) {
@@ -34,11 +76,11 @@ func (h *RequestBodyHandlers) GetTasks(ctx context.Context, request tasks.GetTas
 }
 
 func (h *RequestBodyHandlers) PostTasks(ctx context.Context, request tasks.PostTasksRequestObject) (tasks.PostTasksResponseObject, error) {
-	taskRequest := request.Body // теперь это *PostTaskRequest
+	taskRequest := request.Body
 
 	taskToCreate := TaskService.Tasks{
-		Task:   taskRequest.Task,
-		IsDone: false, // всегда false
+		Task:   *taskRequest.Task,
+		IsDone: false,
 	}
 
 	createdTask, err := h.service.CreatesTask(taskToCreate)
@@ -53,10 +95,6 @@ func (h *RequestBodyHandlers) PostTasks(ctx context.Context, request tasks.PostT
 	}
 
 	return response, nil
-}
-
-func NewRequestBodyHandlers(s TaskService.RequestBodyService) *RequestBodyHandlers {
-	return &RequestBodyHandlers{service: s}
 }
 
 func (h *RequestBodyHandlers) PatchHandler(c echo.Context) error {

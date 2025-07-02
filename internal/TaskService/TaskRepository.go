@@ -2,7 +2,7 @@ package TaskService
 
 import "gorm.io/gorm"
 
-type RequestBodyRepository interface {
+type TasksRepository interface {
 	CreateTask(req *Tasks) error
 	GetAllTasks() ([]Tasks, error)
 	GetTaskByID(id string) (Tasks, error)
@@ -14,7 +14,7 @@ type TaskRepository struct {
 	DB *gorm.DB
 }
 
-func NewRepository(DB *gorm.DB) RequestBodyRepository {
+func NewRepository(DB *gorm.DB) TasksRepository {
 	return &TaskRepository{DB: DB}
 }
 

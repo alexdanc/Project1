@@ -1,6 +1,6 @@
 package TaskService
 
-type RequestBodyService interface {
+type TasksService interface {
 	CreatesTask(task Tasks) (Tasks, error)
 	GetAllTasks() ([]Tasks, error)
 	GetTaskByID(id string) (Tasks, error)
@@ -9,10 +9,10 @@ type RequestBodyService interface {
 }
 
 type TaskService struct {
-	repo RequestBodyRepository
+	repo TasksRepository
 }
 
-func NewTaskService(r RequestBodyRepository) RequestBodyService {
+func NewTaskService(r TasksRepository) TasksService {
 	return &TaskService{repo: r}
 }
 

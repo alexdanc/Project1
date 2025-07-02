@@ -17,7 +17,7 @@ func main() {
 		log.Fatalf("failed to init db: %v", err)
 	}
 
-	repo := TaskService.NewRepository(db)
+	repo := TaskService.NewTaskRepository(db)
 	service := TaskService.NewTaskService(repo)
 	handler := handlers.NewTaskHandlers(service)
 

@@ -33,7 +33,7 @@ func InitDB() (*gorm.DB, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to connect database: %w", err)
 	}
-
+	db = db.Debug()
 	DB = db
 	return db, nil
 }

@@ -5,7 +5,6 @@ import (
 	tasks "Project1/internal/Web/Tasks"
 	"context"
 	"fmt"
-	"strconv"
 )
 
 type TaskHandlers struct {
@@ -59,9 +58,9 @@ func (h *TaskHandlers) PostTasks(ctx context.Context, request tasks.PostTasksReq
 }
 
 func (h *TaskHandlers) DeleteTasksId(ctx context.Context, request tasks.DeleteTasksIdRequestObject) (tasks.DeleteTasksIdResponseObject, error) {
-	idStr := strconv.Itoa(request.Id)
+	id := uint(request.Id)
 
-	err := h.service.DeleteTaskByID(idStr)
+	err := h.service.DeleteTaskByID(id)
 	if err != nil {
 		return nil, err
 	}
@@ -70,14 +69,14 @@ func (h *TaskHandlers) DeleteTasksId(ctx context.Context, request tasks.DeleteTa
 }
 
 func (h *TaskHandlers) PatchTasksId(ctx context.Context, request tasks.PatchTasksIdRequestObject) (tasks.PatchTasksIdResponseObject, error) {
-	idStr := strconv.Itoa(request.Id)
+	id := uint(request.Id)
 
 	// Проверяем, что тело запроса не nil и поле Task не nil
 	if request.Body == nil || request.Body.Task == nil {
 		return nil, fmt.Errorf("missing 'task' field in request body")
 	}
 
-	updatedTask, err := h.service.UpdateTask(idStr, *request.Body.Task)
+	updatedTask, err := h.service.UpdateTask(id, *request.Body.Task)
 	if err != nil {
 		return nil, err
 	}

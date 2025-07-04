@@ -3,53 +3,53 @@ package TaskService
 type TasksService interface {
 	CreatesTask(task Tasks) (Tasks, error)
 	GetAllTasks() ([]Tasks, error)
-	GetTaskByID(id string) (Tasks, error)
-	UpdateTask(id string, body string) (Tasks, error)
-	DeleteTaskByID(id string) error
+	GetTaskByID(id uint) (Tasks, error)
+	UpdateTask(id uint, body string) (Tasks, error)
+	DeleteTaskByID(id uint) error
 }
 
 type TaskService struct {
-	repo TasksRepository
+	repoTask TasksRepository
 }
 
 func NewTaskService(r TasksRepository) TasksService {
-	return &TaskService{repo: r}
+	return &TaskService{repoTask: r}
+}
+
+func (s *TaskService) GetAllTasks() ([]Tasks, error) {
+	return s.repoTask.GetAllTasks()
+}
+
+func (s *TaskService) GetTaskByID(id uint) (Tasks, error) {
+	return s.repoTask.GetTaskByID(id)
 }
 
 func (s *TaskService) CreatesTask(task Tasks) (Tasks, error) {
 	newTask := &Tasks{
 		Task:   task.Task,
-		IsDone: false, // Можно либо всегда ставить false, либо брать из task.IsDone
+		IsDone: false,
 	}
 
-	err := s.repo.CreateTask(newTask) // передаем указатель
+	err := s.repoTask.CreateTask(newTask)
 	if err != nil {
 		return Tasks{}, err
 	}
 
-	return *newTask, nil // возвращаем обновленную структуру с ID
+	return *newTask, nil
 }
 
-func (s *TaskService) GetAllTasks() ([]Tasks, error) {
-	return s.repo.GetAllTasks()
-}
-
-func (s *TaskService) GetTaskByID(id string) (Tasks, error) {
-	return s.repo.GetTaskByID(id)
-}
-
-func (s *TaskService) UpdateTask(id, body string) (Tasks, error) {
-	tas, err := s.repo.GetTaskByID(id)
+func (s *TaskService) UpdateTask(id uint, body string) (Tasks, error) {
+	tas, err := s.repoTask.GetTaskByID(id)
 	if err != nil {
 		return tas, err
 	}
 	tas.Task = body
-	if err := s.repo.UpdateTask(tas); err != nil {
+	if err := s.repoTask.UpdateTask(tas); err != nil {
 		return tas, err
 	}
 	return tas, nil
 }
 
-func (s *TaskService) DeleteTaskByID(id string) error {
-	return s.repo.DeleteTaskByID(id)
+func (s *TaskService) DeleteTaskByID(id uint) error {
+	return s.repoTask.DeleteTaskByID(id)
 }

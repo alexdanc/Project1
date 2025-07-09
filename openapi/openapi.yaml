@@ -27,7 +27,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Task'
+              $ref: '#/components/schemas/PostTaskRequest'
       responses:
         '201':
           description: The created task
@@ -141,7 +141,28 @@ paths:
           description: User deleted successfully
         '404':
           description: User not found
-
+  /users/{user_id}/tasks:
+    get:
+      summary: Get tasks by user ID
+      tags:
+        - tasks
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of tasks for a user
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+        '404':
+          description: User not found
 components:
   schemas:
     Task:
@@ -154,6 +175,19 @@ components:
           type: string
         is_done:
           type: boolean
+        user_id:
+          type: integer
+          format: uint
+    PostTaskRequest:
+      type: object
+      properties:
+        task:
+          type: string
+        user_id:
+          type: integer
+      required:
+        - task
+        - user_id
 
     User:
       type: object

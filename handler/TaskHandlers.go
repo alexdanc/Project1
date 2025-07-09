@@ -11,6 +11,29 @@ type TaskHandlers struct {
 	service TaskService.TasksService
 }
 
+func (h *TaskHandlers) GetUsersUserIdTasks(ctx context.Context, request tasks.GetUsersUserIdTasksRequestObject) (tasks.GetUsersUserIdTasksResponseObject, error) {
+
+	userID := request.UserId
+
+	userTasks, err := h.service.GetTasksByUserID(uint(userID))
+	if err != nil {
+
+		return nil, err
+	}
+
+	var responseTasks []tasks.Task
+	for _, t := range userTasks {
+		responseTasks = append(responseTasks, tasks.Task{
+			Id:     &t.ID,
+			Task:   &t.Task,
+			IsDone: &t.IsDone,
+			UserId: &t.UserID,
+		})
+	}
+
+	return tasks.GetUsersUserIdTasks200JSONResponse(responseTasks), nil
+}
+
 func NewTaskHandlers(s TaskService.TasksService) *TaskHandlers {
 	return &TaskHandlers{service: s}
 }
@@ -39,8 +62,9 @@ func (h *TaskHandlers) PostTasks(ctx context.Context, request tasks.PostTasksReq
 	taskRequest := request.Body
 
 	taskToCreate := TaskService.Tasks{
-		Task:   *taskRequest.Task,
+		Task:   taskRequest.Task,
 		IsDone: false,
+		UserID: taskRequest.UserID,
 	}
 
 	createdTask, err := h.service.CreatesTask(taskToCreate)
